@@ -1,0 +1,226 @@
+:root {
+    --fondo-principal: #050816;
+    --fondo-secundario: #0c1427;
+    --color-principal: #dce4e8;
+    --red-acento: #e90d0d;
+    --texto-principal: #e6edf3;
+    --texto-suave: #9aa4b2;
+    --fondo-card: #111a33;
+}
+
+body {
+    background-color: var(--fondo-principal);
+    color: var(--texto-principal);
+    font-family:  sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: var(--fondo-secundario);
+    padding: 2px 32px;
+    text-align: center;
+}
+
+header h1 {
+    display: flex;
+    font-size: 2.5vw;
+    color: var(--texto-principal);
+}
+
+main {
+    background-color: var(--texto-principal);
+    color: var(--fondo-principal);
+    padding: 30px 32px;
+}
+
+/* Formulario añadir */
+.form-movies{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-movies input,
+.form-movies textarea,
+.form-movies select,
+.form-movies button{
+    border: 1px solid var(--fondo-secundario);
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.form-movies button {
+    margin-top: 20px;
+}
+
+/*  Filtro combinado */
+.filtro-combinado{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 5px;
+}
+
+.filtro-combinado select, .filtro-combinado input{
+    border: 1px solid var(--fondo-secundario);
+    border-radius: 5px;
+    padding: 7px;
+    
+}
+
+/* Lista de películas */
+.pelis-lista{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    gap: 15px;
+}
+
+.pelis-lista tr{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15%;
+    padding: 7px;
+    border-radius: 5px;
+    border:2px solid var(--fondo-card);
+    background-color: var(--color-principal);
+}
+
+.pelis-lista td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    height: 100%;
+}
+
+.pelis-lista td img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+.pelis-lista .descripcionTitulo{
+    font-weight: bold;
+}
+
+.pelis-lista .descripcion {
+    text-align: justify;
+    font-size: 15px;
+}
+
+.pelis-lista button{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.delete-button{
+    background-color: var(--red-acento);
+    color: var(--texto-principal);
+    border: 1px solid var(--red-acento);
+}
+
+.edit-button {
+    background-color: var(--fondo-principal);
+    color: var(--texto-principal);
+    border: 1px solid var(--fondo-principal);
+}
+
+/* Formulario editar */
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 3px solid var(--texto-suave);
+    box-sizing: border-box;
+}
+
+/* Móvil */
+@media all and (max-width:588px) {
+    header h1 {
+        font-size: 30px;
+        transition: 2s;
+    }
+
+    main {
+        padding: 20px 32px;
+    }
+    .pelis-lista {
+        flex-direction: column;
+        align-items: center; /* ver sisirve */
+        transition: 2s;
+    }
+    
+    .pelis-lista tr {
+        width: 90%;
+    }
+    
+    .pelis-lista {
+        display: flex;
+        flex-direction: column;
+        
+    }
+}
+
+/* Tablet */
+@media all and (min-width: 588px)  and (max-width: 800px){
+    header h1 {
+        font-size: 40px;
+    }
+
+    main {
+        padding: 30px 32px;
+    }
+
+    .pelis-lista{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .pelis-lista tr {
+        width: 45%;
+    }
+}
+
+/* Ordenador/PC */
+@media all and (min-width: 800px){
+    header h1 {
+        font-size: 40px;
+
+    }
+    
+    main {
+        padding: 30px 32px;
+    }
+
+    .pelis-lista {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .pelis-lista tr {
+        width: 30%;
+    }
+}
+
+/* Ordenador/PC */
+@media all and (min-width: 1100px) {
+    .pelis-lista tr {
+        width: 22%;
+    }
+}
