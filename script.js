@@ -83,7 +83,7 @@ let peliArray = [
     anio: 1999,
     descripcion:
       "Un hacker descubre que la realidad es una simulacion controlada por maquinas",
-    url: "https://static1.srcdn.com/wordpress/wp-content/uploads/2020/04/The-Matrix-poster-green.jpg",
+    url: "https://wallpaperaccess.com/full/8609870.jpg",
     genero: "Acción",
   },
   {
