@@ -153,7 +153,7 @@ form.addEventListener("submit", (event) => {
   const tituloRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]{3,20}$/;
   if (!tituloRegex.test(titulo)) {
     errorMensaje +=
-      "El título debe tener entre 3 y 20 caracteres y solo puede contener letras y espacios.\n";
+      "- El título debe tener entre 3 y 20 caracteres y solo puede contener letras y espacios.\n";
   }
 
   //año
@@ -161,30 +161,30 @@ form.addEventListener("submit", (event) => {
   const anioActual = new Date().getFullYear();
 
   if (!anioRegex.test(anio) || Number(anio) > anioActual) {
-    errorMensaje += `El año debe tener 4 cifras y estar entre 1800 y ${anioActual}\n`;
+    errorMensaje += `- El año debe tener 4 cifras y estar entre 1800 y ${anioActual}\n`;
   }
 
   //descripción
   const desRegex = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑüÜ ]{1,100}$/;
   if (!desRegex.test(descripcion)) {
     errorMensaje +=
-      "La descripción debe tener entre 1 y 30 caracteres y solo puede contener letras, números y espacios.\n";
+      "- La descripción debe tener entre 1 y 30 caracteres y solo puede contener letras, números y espacios.\n";
   }
   //url
   const urlRegex = /^https?:\/\/.+/;
   if (!urlRegex.test(url)) {
-    errorMensaje += "URL no válida. Debe comenzar con http:// o https://\n";
+    errorMensaje += "- URL no válida. Debe comenzar con http:// o https://\n";
   }
   //genero
   if (!genero) {
-    errorMensaje += "Elija un género.";
+    errorMensaje += "- Elija un género.";
   }
 
   if (errorMensaje) {
-    document.getElementById("errorMessages").innerHTML =
+    document.getElementById("errorMessages").innerHTML +=
       `<pre class="errorMessage">${errorMensaje}</pre>`;
   } else {
-    document.getElementById("errorMessages").innerHTML =
+    document.getElementById("errorMessages").innerHTML +=
       `<p class="success">FORMULARIO ENVIADO</p>`;
 
     //VALIDACIONES OK, CREA UN OBJETO PELICULAS CON LOS DATOS
