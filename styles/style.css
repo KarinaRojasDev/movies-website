@@ -165,7 +165,7 @@ main {
     }
     .pelis-lista {
         flex-direction: column;
-        align-items: center; /* ver sisirve */
+        align-items: center;
         transition: 2s;
     }
     

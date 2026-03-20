@@ -136,9 +136,11 @@ let peliArray = [
     genero: "Comedia",
   },
 ];
-
+//boton añadir pelicula 
 form.addEventListener("submit", (event) => {
-  event.preventDefault(); //para el envio
+  //Evita el comportamiento por defecto del navegador.
+  event.preventDefault();
+
   //accedemos a los valores del formulario
   const titulo = event.target.titulo.value;
   const anio = event.target.anio.value;
@@ -146,7 +148,7 @@ form.addEventListener("submit", (event) => {
   const url = event.target.urlFoto.value;
   const genero = event.target.genero.value;
 
-  //Validaciones
+  //Mensaje validación de error
   let errorMensaje = "";
 
   //título
@@ -184,10 +186,11 @@ form.addEventListener("submit", (event) => {
     document.getElementById("errorMessages").innerHTML +=
       `<pre class="errorMessage">${errorMensaje}</pre>`;
   } else {
+    //VALIDACIONES OK- MENSAJE
     document.getElementById("errorMessages").innerHTML +=
       `<p class="success">FORMULARIO ENVIADO</p>`;
 
-    //VALIDACIONES OK, CREA UN OBJETO PELICULAS CON LOS DATOS
+    //CREA UN OBJETO PELICULAS CON LOS DATOS
     let pelicula = {
       titulo: titulo,
       anio: anio,
@@ -195,10 +198,11 @@ form.addEventListener("submit", (event) => {
       url: url,
       genero: genero,
     };
+
     //GUARDAR EN ARRAY DE PELI
     peliArray.push(pelicula);
     form.reset();
-    renderTabla(peliArray);
+    renderTabla(peliArray); //PINTARLO EN UNA TABLA
   }
 });
 
@@ -226,7 +230,10 @@ function renderTabla(array) {
                     `;
     //Lógica para el boton de borrar
     tr.querySelector(".delete-button").addEventListener("click", () => {
+      //ELIMINA del ARRAY
+      //accede al INDICE , borra 1 ELEMENTO
       peliArray.splice(index, 1);
+      //ELIMINA DEL HTML 
       tr.remove();
     });
 
@@ -249,13 +256,14 @@ function renderTabla(array) {
           <button type="submit">Guardar</button>
         </form>
       </td>`;
-      //edita el form
+      //seleciono form
       const editForm = tr.querySelector(".edit-form");
+      //submit guardar
       editForm.addEventListener("submit", (event) => {
         // Evitar el comportamiento por defecto del formulario
         event.preventDefault();
 
-        //actualizar datos de las peliculas
+        //actualizar datos de las peliculas y elimino los espacios en blanco
         peli.titulo = editForm.elements.titulo.value.trim();
         peli.anio = editForm.elements.anio.value.trim();
         peli.descripcion = editForm.elements.descripcion.value.trim();
@@ -272,6 +280,7 @@ function renderTabla(array) {
   
 /* Filtro combinado */
 function filterPeliculas(filterGenero, searchTitulo) {
+  //filtro las peliculas por genero y por titulo 
   return peliArray.filter(
     (peli) =>
       (filterGenero === "Todas" || peli.genero === filterGenero) &&
@@ -281,11 +290,13 @@ function filterPeliculas(filterGenero, searchTitulo) {
 }
 
 //Evento filtro género
+//input se dispara mientras escribo
 document.getElementById("filtroTitulo").addEventListener("input", (event) => {
   let filtroGenero = document.getElementById("filtroGenero").value;
   let peliculasFiltradas = filterPeliculas(filtroGenero, event.target.value);
   renderTabla(peliculasFiltradas);
 });
+//se dispara cuando termino de seleccionar
 document.getElementById("filtroGenero").addEventListener("change", (event) => {
   let filtroTitulo = document.getElementById("filtroTitulo").value;
   let filtroPelis = filterPeliculas(event.target.value, filtroTitulo);
