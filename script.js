@@ -213,8 +213,8 @@ function renderTabla(array) {
     //AGREGAR AL BODY EL OBJETO
     tr.innerHTML += `
 
-                    <td><strong>Título:</strong> ${peli.titulo}</td>
-                    <td><strong>Año:</strong> ${peli.anio}</td>
+                    <td>Título:${peli.titulo}</td>
+                    <td>Año: ${peli.anio}</td>
                     <td class="descripcionTitulo">Descripción:</td>
                     <td class="descripcion"> ${peli.descripcion}</td>
                     <td><img src="${peli.url}" alt="${peli.titulo}" width="100"></td>
